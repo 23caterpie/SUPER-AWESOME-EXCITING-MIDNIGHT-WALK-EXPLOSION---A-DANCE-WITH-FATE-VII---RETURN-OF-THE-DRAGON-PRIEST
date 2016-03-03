@@ -14,10 +14,8 @@ public class Arrow : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		Debug.Log ("Arrow Collide!");
-		if ((other.gameObject.tag == "Death Plane")) {
-			Destroy (this.gameObject);
-			Debug.Log ("Arrow Should Die!");
+		if ((other.gameObject.tag == "Player")) {
+			//KILL
 		}
 	}
 }

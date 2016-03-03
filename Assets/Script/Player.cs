@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Jump : MonoBehaviour {
-
-	//Maximum speed of the player (if they have an input button all the way down)
-	public float maxSpeed = 10f;
+public class Player : MonoBehaviour {
 
 	//Amount of force to apply when jumping
 	public float jumpForce = 300f;
@@ -23,6 +20,8 @@ public class Jump : MonoBehaviour {
 
 	//Determining what things are the ground or not (for example, the player is not the ground
 	public LayerMask whatIsGround;
+
+	public GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
@@ -47,9 +46,13 @@ public class Jump : MonoBehaviour {
 	//Called when we hit powerups!
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Enemy") {
-			//Destroy(other.gameObject);
-			//DIE
-			Debug.Log("Player Should Die!");
+
+			GameObject gameLogicObject = GameObject.Find ("GameLogic");
+			GameLogic gameLogicScript = gameLogicObject.GetComponent<GameLogic> ();
+			gameLogicScript.playerAlive = false;
+
+			Instantiate (explosion, this.transform.position, Quaternion.identity);
+			Destroy (this.gameObject);
 		}
 	}
 }
