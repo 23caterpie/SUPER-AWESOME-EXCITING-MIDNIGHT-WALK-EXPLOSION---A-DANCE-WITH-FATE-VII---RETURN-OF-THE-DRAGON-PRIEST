@@ -51,7 +51,9 @@ public class Player : MonoBehaviour {
 			GameLogic gameLogicScript = gameLogicObject.GetComponent<GameLogic> ();
 			gameLogicScript.playerAlive = false;
 
-			Instantiate (explosion, this.transform.position, Quaternion.identity);
+			GameObject go = (GameObject) Instantiate (explosion, this.transform.position, Quaternion.identity);
+			go.transform.position = transform.position;
+			//Instantiate (explosion, this.transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
 		}
 	}

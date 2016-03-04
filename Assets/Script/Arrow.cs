@@ -10,7 +10,7 @@ public class Arrow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.transform.Translate(new Vector2(-0.05f, 0.0f));
+		gameObject.transform.Translate(new Vector2(-5f * Time.deltaTime, 0.0f));
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {

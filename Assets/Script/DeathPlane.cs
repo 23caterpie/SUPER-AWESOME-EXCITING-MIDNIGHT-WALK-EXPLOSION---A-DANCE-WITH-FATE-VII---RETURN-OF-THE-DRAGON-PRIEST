@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DeathPlane : MonoBehaviour {
 
+	public GameObject effect;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,6 +17,8 @@ public class DeathPlane : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Enemy") {
+			GameObject go = (GameObject) Instantiate (effect, this.transform.position, Quaternion.identity);
+			go.transform.position = other.transform.position;
 			Destroy (other.gameObject);
 		}
 	}

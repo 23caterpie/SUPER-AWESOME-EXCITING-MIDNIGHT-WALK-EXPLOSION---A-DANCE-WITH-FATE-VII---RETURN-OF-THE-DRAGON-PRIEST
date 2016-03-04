@@ -13,9 +13,11 @@ public class GameLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		GameObject musicPlayerObject = GameObject.Find ("MusicPlayer");
+		MusicPlayerScript musicPlayerScript = musicPlayerObject.GetComponent<MusicPlayerScript> ();
+		musicPlayerScript.PlaySong (0);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (playerAlive) {
@@ -30,7 +32,7 @@ public class GameLogic : MonoBehaviour {
 			}
 		}
 		enemyTimeDelta += Time.deltaTime;
-		if(enemyTimeDelta > 1.0) {
+		if(enemyTimeDelta > 1.25) {
 			enemyTimeDelta = 0f;
 			GameObject spawnControllerObject = GameObject.Find ("SpawnController");
 			SpawnController spawnControllerScript = spawnControllerObject.GetComponent<SpawnController> ();
